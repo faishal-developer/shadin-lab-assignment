@@ -1,13 +1,33 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* typography and color started*/
+@font-face {
+  font-family: HarmoniaSansProCyrRegular;
+  src: url(font/HarmoniaSansProCyr-Regular.ttf);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: HarmoniaSansProCyrLight;
+  src: url(font/HarmoniaSansProCyr-Light.ttf);
+}
+
+@font-face {
+  font-family: HarmoniaSansProCyrBold;
+  src: url(font/HarmoniaSansProCyr-Bold.ttf);
+}
+
+@font-face {
+  font-family: HarmoniaSansProCyrSemiBold;
+  src: url(font/HarmoniaSansProCyr-SemiBd.ttf);
+}
+
+
+body {
+  margin: 0;
+  font-family: HarmoniaSansProCyrSemiBold, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F7F8F9 !important;
+}
+
+p {
+  /* font-family: HarmoniaSansProCyrRegular; */
 }

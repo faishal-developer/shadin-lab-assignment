@@ -1,0 +1,90 @@
+.product-show {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 5vw;
+    row-gap: 5vh;
+    padding: 8vh 0;
+}
+
+.p-show-flex-figure {
+    margin-top: 30px;
+    background-color: #F7F8F9;
+    margin-right: 30px;
+    position: relative;
+}
+
+.p-show-image-blend {
+    position: absolute;
+    background: #ff6f15d8;
+    z-index: 5;
+    height: 65px;
+    width: 65px;
+    top: -2px;
+    left: -2px;
+}
+
+.p-show-h1 {
+    font-family: HarmoniaSansProCyrBold;
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.p-show-short-des,
+.p-show-choose h3 {
+    font-family: HarmoniaSansProCyrRegular;
+    font-size: 1em;
+    margin: 10px 0 15px 0;
+}
+
+.p-show-des {
+    font-family: HarmoniaSansProCyrRegular;
+    margin: 15px 0;
+    color: #68757D;
+    max-width: 450px;
+    font-size: 17px;
+}
+
+.p-show-choose {
+    margin-top: 8vh;
+    padding: 28px 0;
+    border-top: 1px solid #68757d28;
+    border-bottom: 1px solid #68757d2c;
+    justify-content: space-between;
+}
+
+.d-flex-al-center {
+    display: flex;
+    align-items: center;
+}
+
+.d-flex-al-center h3 {
+    font-family: HarmoniaSansProCyrRegular;
+    margin-top: 0px;
+    margin-left: .4em;
+    cursor: pointer;
+}
+
+.d-flex-al-center h3 {
+    margin-right: .8em;
+}
+
+.p-show-icon i {
+    margin-right: 16px;
+    font-size: 18px;
+}
+
+.p-show-order-btn {
+    background-color: #FF7013;
+    color: white;
+    font-family: HarmoniaSansProCyrSemiBold;
+    padding: 15px 25px;
+    border-radius: 35px;
+}
+
+
+
+@media only screen and (max-width: 767px) {
+    .product-show {
+        grid-template-columns: 1fr;
+    }
+}
