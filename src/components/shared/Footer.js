@@ -10,7 +10,7 @@ const Footer = () => {
             <div className='container footer-flex'>
             <div>
                 <figure className='figure'>
-                    <img width='120px' src={image} alt='logo'/>
+                    <img className='img-w-100' src={image} alt='logo'/>
                 </figure>
                 <p className='footer-p'>shopy © 2015. all right reserves</p>
             </div>
@@ -37,7 +37,7 @@ const Footer = () => {
             <div>
                 <p className='orange-color footer-payment-p'>Payment method</p>
                 <figure className='figure'>
-                    <img width='80%' src={image2} alt='payment gateway' />
+                    <img className='f-img-width' src={image2} alt='payment gateway' />
                 </figure>
             </div>
             </div>

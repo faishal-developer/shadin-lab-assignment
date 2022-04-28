@@ -1,12 +1,10 @@
 import React from 'react';
-import Navbar from '../components/home/Navbar'
-import Banner from '../components/home/Banner'
+import Banner from '../components/home/Banner/Banner'
 import Products from '../components/shared/Products'
-import Footer from '../components/shared/Footer'
 import Discount from '../components/home/Discount'
 import NewsLetter from '../components/home/NewsLetter'
 import BestSales from '../components/home/BestSales/BestSales'
-import Topbar from '../components/home/Topbar'
+import LayOut from '../components/Layout/LayOut';
 
 const Home = () => {
     const data = {
@@ -16,18 +14,15 @@ const Home = () => {
     }
     return (
         <>
-            <Topbar/>
-            <Navbar from='home'/>
-            <Banner/>
-            <Products data={data}>
+            <Banner />
+            <Products sdata={data}>
                 <div className='dot-dot'>
                     ...
                 </div>
             </Products>
-            <Discount/>
-            <BestSales/>
-            <NewsLetter/>
-            <Footer/>
+            <Discount />
+            <BestSales />
+            <NewsLetter />
         </>
     );
 };

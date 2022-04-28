@@ -5,7 +5,7 @@ import FilteredProduct from './FilteredProduct';
 
 const ProductsAll = () => {
     return (
-        <div className='container' style={{marginTop:'10vh'}}>
+        <div className='container mt-10vh'>
             <div className='p-aside-grid'>
                 <ProductsAsideBAr/>
                 <FilteredProduct/>

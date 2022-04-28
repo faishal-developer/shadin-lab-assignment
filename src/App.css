@@ -1,13 +1,88 @@
 .orange-color {
-  color: #FF7013;
+  color: #FF7013 !important;
 }
 
 .ash-color {
   color: #42535F;
 }
 
+.ash-2 {
+  color: #69727D;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.mt-10vh {
+  margin-top: 10vh;
+}
+
+.h-100vh {
+  height: 100vh;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.pb-10 {
+  padding-bottom: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-32 {
+  margin-bottom: 32px;
+}
+
+.fs-20 {
+  font-size: 20px;
+}
+
 .pr-2 {
   padding-right: 12px;
+}
+
+.b-bottom {
+  border-bottom: 1px solid #3333331e;
+}
+
+.bg-light {
+  background-color: #F7F8F9;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+
+.max-ht-180 {
+  max-height: 180px;
+}
+
+.max-wd {
+  max-width: 100%;
+}
+
+.t-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 150px;
 }
 
 body {
@@ -18,7 +93,7 @@ body {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 /* typography ended */
@@ -38,6 +113,15 @@ a {
   display: flex;
 }
 
+.a-i-center {
+  align-items: center;
+}
+
+.j-c-center {
+  justify-content: center;
+}
+
+
 /* header area started */
 .top-shadow {
   /* box-shadow: 1px 1px 1px #333333ee; */
@@ -50,7 +134,7 @@ a {
   justify-content: space-between;
   align-items: center;
   font-size: 14px;
-  padding: 20px 0px;
+  padding: 14px 0px;
 }
 
 .top-contact-info {

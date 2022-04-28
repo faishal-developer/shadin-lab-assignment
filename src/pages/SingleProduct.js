@@ -1,12 +1,10 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import fakeData from '../components/fakeData';
-import Navbar from '../components/home/Navbar';
-import Topbar from '../components/home/Topbar';
 import NewsLetter from '../components/home/NewsLetter';
 import ProductShow from '../components/ProductShow/ProductShow';
-import Footer from '../components/shared/Footer';
 import Products from '../components/shared/Products'
+import LayOut from '../components/Layout/LayOut';
 
 const SingleProduct = () => {
     let {id} = useParams()
@@ -19,12 +17,9 @@ const SingleProduct = () => {
     }
     return (
         <>
-            <Topbar/>
-            <Navbar/>
             <ProductShow product={product}/>
             <Products data={data}/>
             <NewsLetter/>
-            <Footer/>
         </>
     );
 };

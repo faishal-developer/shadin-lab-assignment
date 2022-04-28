@@ -29,11 +29,23 @@
     margin: 0;
 }
 
-.p-show-short-des,
-.p-show-choose h3 {
+.img-wd-90 {
+    width: 90%;
+}
+
+.img-h-w-60 {
+    height: 60px;
+    width: 60px;
+}
+
+.p-show-short-des {
     font-family: HarmoniaSansProCyrRegular;
     font-size: 1em;
     margin: 10px 0 15px 0;
+}
+
+.p-show-choose h3 {
+    font-size: 1em;
 }
 
 .p-show-des {
@@ -50,6 +62,7 @@
     border-top: 1px solid #68757d28;
     border-bottom: 1px solid #68757d2c;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .d-flex-al-center {
@@ -77,7 +90,8 @@
     background-color: #FF7013;
     color: white;
     font-family: HarmoniaSansProCyrSemiBold;
-    padding: 15px 25px;
+    padding: 12px 20px;
+    font-size: 18px;
     border-radius: 35px;
 }
 

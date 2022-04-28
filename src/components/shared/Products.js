@@ -1,24 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import fakeData from '../fakeData';
+import UserSliderChanger from '../hooks/UserSliderChanger';
 import SingleCard from './SingleCard';
 
-const Products = ({data,children}) => {
+const Products = ({sdata,children}) => {
+    const [dataNum, setDataNum] = useState(0)
+    const [pasued,setPasued] = useState(false)
+    const { handleClick } = UserSliderChanger()
+
+    useEffect(() => {
+         if(!pasued){
+             handleClick(setDataNum, dataNum, 2)
+         }
+    },[dataNum])
+
     return (
-        <div style={{ backgroundColor:'#F7F8F9',marginTop:'20px'}} >
+        <div className='bg-light mt-20' >
             <div className='container products'>
-                <h1><span className='orange-color'>{data?.head1}</span> {data?.head2}</h1>
-                <p style={{ color:'#69727D',marginBottom:'2em'}}>{data?.shortDes}</p>
-                <div className='products-grid'>
+                <h1><span className='orange-color'>{sdata?.head1}</span> {sdata?.head2}</h1>
+                <p className='ash-2 mb-32'>{sdata?.shortDes}</p>
+                <div className='products-grid fade'>
                     {
-                        fakeData?.map((v,i)=>{
-                            if (i < 4) return <SingleCard key={i} product={v} />
-                            else return ''
-                        })
+                        fakeData?.slice(dataNum*4,(dataNum+1)*4)?.map((v,i)=><SingleCard pause={setPasued} key={i} product={v} />)
                     }
                 </div>
                 <div style={{marginBottom:'3em'}}>
-                    <Link style={{textDecoration:'none'}} to='/products'>{children}</Link>
+                    <Link to='/products'>{children}</Link>
                 </div>
             </div>
         </div>

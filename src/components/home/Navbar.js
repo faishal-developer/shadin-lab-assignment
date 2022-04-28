@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import logo from '../../images/logo.png'
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { ThemeContext } from '../hooks/Context';
+
 
 const Navbar = (props) => {
     const [inputTrue,setInputTrue] = useState(false)
     const [shownavbar,setShowNavbar] = useState(false)
+    const { cart } = useContext(ThemeContext)
+    const {pathname} = useLocation()
 
     const myfunction=()=>{
         setShowNavbar(!shownavbar)
@@ -14,11 +18,11 @@ const Navbar = (props) => {
         else return <i style={{fontSize:'18px'}} className="fa-solid fa-bars"></i>
     }
     const activePageClass=(v)=>{
-        if (v === props.from) return 'active ash-color'
+        if (v=== pathname) return 'active ash-color'
         else return 'ash-color'
     }
     return (
-        <div style={{ borderBottom: '1px solid #3333331e', backgroundColor: '#fff'}}>
+        <div className='b-bottom bg-white'>
             <nav className="container nav">
                 <div className="navbar">
                     <figure className="figure figure-logo ">
@@ -26,11 +30,11 @@ const Navbar = (props) => {
                     </figure>
                     <div onClick={()=>myfunction()} className="bar-icon">{barAndCancel()}</div>
                     <div className={shownavbar? 'responsive' : 'menubar'}>
-                        <div className="menu-item"><Link to='/'  className={activePageClass('home')}>Home</Link></div>
-                        <div className="menu-item"><Link to='/products'  className={activePageClass('products')}>Products</Link></div>
-                        <div className="menu-item"><Link to='/hotdeals'  className={activePageClass()}>Hot Deals</Link></div>
-                        <div className="menu-item"><Link to='/about'  className={activePageClass()}>About</Link></div>
-                        <div className="menu-item"><Link to='/contact'  className={activePageClass()}>Contact</Link></div>
+                        <div className="menu-item"><Link to='/'  className={activePageClass('/')}>Home</Link></div>
+                        <div className="menu-item"><Link to='/products'  className={activePageClass('/products')}>Products</Link></div>
+                        <div className="menu-item"><Link to='/hotdeals'  className={activePageClass('/hotdeals')}>Hot Deals</Link></div>
+                        <div className="menu-item"><Link to='/about'  className={activePageClass('/about')}>About</Link></div>
+                        <div className="menu-item"><Link to='/contact'  className={activePageClass('/contact')}>Contact</Link></div>
                     </div>
                 </div>
                 <div className="nav-icons">
@@ -41,10 +45,10 @@ const Navbar = (props) => {
                         </div>
                     </div>
                     <div className="icons ash-color">
-                        <a className="ash-color" href="#"><i className="fa-solid fa-user"></i></a>
+                        <Link className="ash-color" to='/auth/login'><i className="fa-solid fa-user"></i></Link>
                     </div>
                     <div className="icons top-cart-num ash-color">
-                        <p>5</p>
+                        <p>{cart?.length}</p>
                         <a className="ash-color" href="#"><i className="fa-solid fa-cart-shopping"></i></a>
                     </div>
                 </div>

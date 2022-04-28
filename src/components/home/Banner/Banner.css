@@ -1,0 +1,28 @@
+.b-carousel {
+    transition: .5s;
+    transform: scale(0.8);
+}
+
+.b-c-animation {}
+
+.b-c-para {
+    max-width: 500px;
+}
+
+.c-button {
+    width: 9px;
+    height: 25px;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.c-b-active {
+    width: 9px;
+    height: 40px;
+    background-color: #FF7013;
+    margin-bottom: 10px;
+}
+
+.mr-30 {
+    margin-right: 30px;
+}

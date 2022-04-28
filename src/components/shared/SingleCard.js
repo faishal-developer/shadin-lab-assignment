@@ -1,26 +1,33 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import useFunc from '../hooks/useFunc';
 
-const SingleCard = ({product}) => {
+const SingleCard = ({ product, pause}) => {
     let navigate = useNavigate();
+    const { updateCart,isCarted } = useFunc()
+       
     
 
     const goToSingleProduct=(id)=>{
         navigate(`/singleProduct/${product?.id}`)
     }
+    const cartHandler=(e)=>{ 
+        e.stopPropagation()
+        updateCart(product)
+    }
+    
     return (
         <div onClick={goToSingleProduct} className="single-card">
             <figure>
                 <img 
-                    className='card-image' 
-                    width='100%'
+                    className='card-image max-wd max-ht-100' 
                     src={product?.image} 
                     alt="product"
                 />
             </figure>
             <p className='ash-color2'>{product?.name}</p>
-            <p className='price'>{product?.price}</p>
-            <p className='card-p-none' style={{padding:'0px 0 10px'}}>sizes: {product?.sizes?.join('-')}</p>
+            <p className='price'>{product?.price}$</p>
+            <p className='card-p-none pb-10'>sizes: {product?.sizes?.join('-')}</p>
             <div className='card-p-none'>
             <div className='color-flex'>
                 {
@@ -32,7 +39,9 @@ const SingleCard = ({product}) => {
             </div>
             <div className='product-icon card-p-none'>
                 <i className="fa-solid fa-globe"></i>
-                <i className="fa-solid fa-cart-plus" style={{color:'#FF7013'}}></i>
+                <button className='bg-tparent' disabled={isCarted(product)[1]} onClick={(e) => cartHandler(e)} >
+                    <i className={isCarted(product)[0]}></i>
+                </button>
                 <i className="fa-solid fa-heart"></i>
             </div>
         </div>

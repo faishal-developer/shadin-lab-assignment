@@ -8,7 +8,7 @@ const NewsLetter = () => {
             <p className='ash-color'>join us to get all news and special offer</p>
             <p className='ash-para'>
                 <i className="orange-color fa-solid fa-envelope"></i>
-                <input style={{outline:0,border:0}} type='text' placeholder='type your email here'/>
+                <input type='text' placeholder='type your email here'/>
             </p>
             <div className='news-letter-button'>
                 Join Us

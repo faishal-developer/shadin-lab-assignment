@@ -1,10 +1,11 @@
 .news-letter {
     background-color: white;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
     margin-top: 10vh;
+    padding: 13px 0px;
 }
 
 .news-letter p,
@@ -21,6 +22,11 @@
 
 .news-letter .ash-para {
     color: #68757d9d;
+}
+
+.news-letter .ash-para input {
+    outline: 0;
+    border: 0;
 }
 
 .news-letter .fa-envelope {
