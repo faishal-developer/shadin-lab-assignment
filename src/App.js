@@ -8,6 +8,7 @@ import Context from './components/hooks/Context';
 import LayOut from './components/Layout/LayOut';
 import LoginLayOut from './components/Layout/LoginLayOut';
 import Registration from './components/login/Registration';
+import CartDetails from './pages/CartDetails';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="" element={<Home />}></Route>
             <Route path="products" element={<Products />} />
             <Route path="singleProduct/:id" element={<SingleProduct />} />
+            <Route path="cartDetails" element={<CartDetails />} />
         </Route>
         <Route path="auth" element={<LoginLayOut/>}>
           <Route path='login' element={<Login/>}/>

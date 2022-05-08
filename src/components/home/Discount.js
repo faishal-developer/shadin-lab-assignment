@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import fakeData from '../fakeData';
 import useFunc from '../hooks/useFunc';
 
+
+const data = fakeData[0]
 const Discount = () => {
     const { updateCart } = useFunc()
 
-    const data = fakeData[0]
+    const memoizedUpdate = useCallback(()=>{
+        updateCart(data)
+    },[updateCart])
+
     return (
         <div style={{ background: '#F7F8F9' }}>
             <div className='container discount'>
@@ -19,7 +24,7 @@ const Discount = () => {
                         <p>{data.shortDes}</p>
                     </div>
                     <div className='orange-color discount-price'>
-                        <i onClick={()=>updateCart(data)} className="fa-solid fa-cart-plus c-pointer mr-10 orange-color fs-20"></i>
+                        <i onClick={()=>memoizedUpdate()} className="fa-solid fa-cart-plus c-pointer mr-10 orange-color fs-20"></i>
                         <h3>{data.price}$</h3>
                     </div>
                 </div>
@@ -34,4 +39,4 @@ const Discount = () => {
     );
 };
 
-export default Discount;
+export default React.memo(Discount);

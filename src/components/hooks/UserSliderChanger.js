@@ -9,15 +9,8 @@ const UserSliderChanger = () => {
             } else {
                 setDataNum(0)
             }
-        //     console.log('working,interval');
-        //     setDataNum(prev=>{
-        //         if(prev<max){
-        //             return prev+1
-        //         }else{
-        //             return 0
-        //         }
+        
         }, 3000);
-        // return interval
     }
 
     

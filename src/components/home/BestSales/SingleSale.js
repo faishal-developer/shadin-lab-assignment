@@ -3,6 +3,7 @@ import useFunc from '../../hooks/useFunc';
 
 const SingleSale = ({ product }) => {
     const { updateCart, isCarted } = useFunc()
+    
 
     return (
         <div className='single-sale'>
@@ -33,4 +34,4 @@ const SingleSale = ({ product }) => {
     );
 };
 
-export default SingleSale;
+export default React.memo(SingleSale);

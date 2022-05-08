@@ -11,7 +11,7 @@ const Products = ({sdata,children}) => {
 
     useEffect(() => {
          if(!pasued){
-             handleClick(setDataNum, dataNum, 2)
+            handleClick(setDataNum, dataNum, 2)
          }
     },[dataNum])
 
@@ -20,11 +20,11 @@ const Products = ({sdata,children}) => {
             <div className='container products'>
                 <h1><span className='orange-color'>{sdata?.head1}</span> {sdata?.head2}</h1>
                 <p className='ash-2 mb-32'>{sdata?.shortDes}</p>
-                <div className='products-grid fade'>
+                <div className='products-grid'>
                     {
                         fakeData?.slice(dataNum*4,(dataNum+1)*4)?.map((v,i)=><SingleCard pause={setPasued} key={i} product={v} />)
                     }
-                </div>
+                </div> 
                 <div style={{marginBottom:'3em'}}>
                     <Link to='/products'>{children}</Link>
                 </div>

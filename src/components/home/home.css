@@ -60,7 +60,9 @@
     grid-template-columns: repeat(4, 1fr);
     column-gap: 15px;
     row-gap: 15px;
+    transition: all .3s;
 }
+
 
 .dot-dot {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -78,6 +80,7 @@
     padding: 10px;
     transition: .2s;
     cursor: pointer;
+    height: 315px;
 }
 
 .price {
@@ -117,9 +120,14 @@
     display: none;
 }
 
+.single-card img {
+    max-height: 200px;
+}
+
 .single-card:hover img {
-    width: 65%;
-    /* transition: .2s; */
+    /* width: 60%; */
+    max-height: 120px;
+    /* transition: .2s;*/
 }
 
 .color-flex {
@@ -230,11 +238,15 @@
 }
 
 /* animation */
-.fade {
+.products-grid {
     -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.4s;
-    animation-name: fade;
-    animation-duration: 3s;
+    -webkit-animation-duration: 3s;
+    animation: fade 3s ease 3s infinite;
+    /* animation-duration: 1s;
+    animation-delay: 3.1s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite; */
+    animation-fill-mode: forwards;
 }
 
 @-webkit-keyframes fade {
@@ -259,7 +271,7 @@
 
 
 /* media query */
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 901px) {
     .products-grid {
         grid-template-columns: repeat(3, 1fr)
     }
@@ -272,6 +284,10 @@
 @media only screen and (max-width: 769px) {
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .single-card {
+        /* height: 400px; */
     }
 }
 

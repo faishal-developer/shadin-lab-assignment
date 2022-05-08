@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useFunc from '../hooks/useFunc';
 
@@ -10,11 +10,11 @@ const SingleCard = ({ product, pause}) => {
 
     const goToSingleProduct=(id)=>{
         navigate(`/singleProduct/${product?.id}`)
-    }
-    const cartHandler=(e)=>{ 
+    } 
+    const cartHandler=useCallback((e)=>{ 
         e.stopPropagation()
         updateCart(product)
-    }
+    },[product,updateCart])
     
     return (
         <div onClick={goToSingleProduct} className="single-card">
@@ -48,4 +48,4 @@ const SingleCard = ({ product, pause}) => {
     );
 };
 
-export default SingleCard;
+export default React.memo(SingleCard);

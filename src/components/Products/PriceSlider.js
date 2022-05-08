@@ -7,10 +7,11 @@ const PriceSlider = ({setValue}) => {
     return (
         <div className='price-slider'>
             <RangeSlider
-                max={50}
-                defaultValue={[10, 40]}
+                max={250}
+                min={100}
+                defaultValue={[100, 250]}
                 style={{ color:'#42535F'}}
-                constraint={([start, end]) => start <= 25 && end >= 35}
+                constraint={([start, end]) => start <= 167 && end >= 177}
                 onChange={(v)=>setValue(v)}
             />
         </div>

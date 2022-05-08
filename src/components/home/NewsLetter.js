@@ -2,6 +2,7 @@ import React from 'react';
 import './home2.css'
 
 const NewsLetter = () => {
+
     return (
         <div className='container news-letter'>
             <h3 style={{fontSize:'20px'}} className='orange-color'>NEWS LETTER</h3>
@@ -17,4 +18,4 @@ const NewsLetter = () => {
     );
 };
 
-export default NewsLetter;
+export default React.memo(NewsLetter);

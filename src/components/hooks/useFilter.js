@@ -9,7 +9,7 @@ const useFilter = () => {
 
     const priceFilter=(Data)=>{
         let newData = Data.filter(v=>{
-            return v.price <= priceSlider[1]*5 && v.price >= priceSlider[0]*5
+            return v.price <= priceSlider[1] && v.price >= priceSlider[0]
         })
         setData(newData);
     }
@@ -85,7 +85,6 @@ const useFilter = () => {
             nextOrPrev(true,1)
             return
         }else if(differ<4){
-            console.log(differ);
             nextOrPrev(true,2)
             return
         }else{
@@ -93,9 +92,8 @@ const useFilter = () => {
         }
     }
 
-    const handlePagiByData = ()=>{
-        let pagiBtn= {...pagiBtnValue}
-        pagiBtn.t = Math.ceil(data?.length/3)
+    const handlePagiByData = (pagi)=>{
+        let pagiBtn= {...pagi}
         dotExistOrNot(pagiBtn)
         defaultPagi.t = pagiBtn.t
         if(pagiBtn.dot===false){

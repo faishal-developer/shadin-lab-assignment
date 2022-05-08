@@ -1,15 +1,24 @@
 import React, { useContext, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { ThemeContext } from '../hooks/Context';
 import useFilter from '../hooks/useFilter';
 import PaginationBtn from './PaginationBtn';
 
 const Pagination = () => {
-    const { data, pagiBtnValue} =useContext(ThemeContext)
+    const { data, pagiBtnValue, setPagiBtnValue} =useContext(ThemeContext)
     const { handlePagiByData, handleDot, nextOrPrev} = useFilter()
+    const { search } = useLocation();
+    const quantity = new URLSearchParams(search).get('quantity') || 3;
+    console.log(quantity);
+
     
     useEffect(() => {
-        handlePagiByData(pagiBtnValue.t)
-    }, [data])
+        let newPagi = {...pagiBtnValue}
+        newPagi.t= Math.ceil(data.length/Number(quantity))
+        console.log(newPagi.t);
+        setPagiBtnValue(newPagi)
+        handlePagiByData(newPagi)
+    }, [data,quantity])
     return (
         <div className='flex a-i-center mt-10vh j-c-center'>
             <button

@@ -7,13 +7,12 @@ import UserSliderChanger from '../../hooks/UserSliderChanger';
 
 let data = fakedata.slice(0, 3)
 const Banner = () => {
-    const [dataNum,setDataNum] = useState(0)
-    const {handleClick} = UserSliderChanger()
+    const [dataNum, setDataNum] = useState(0)
+    const { handleClick } = UserSliderChanger()
 
-    
-    useEffect(()=>{
-        handleClick(setDataNum,dataNum,2) 
-    },[dataNum])
+    useEffect(() => {
+        handleClick(setDataNum, dataNum, 2)
+    }, [dataNum])
     return (
         <div className='Banner'>
             <div className='container banner-d-flex'>
@@ -21,11 +20,11 @@ const Banner = () => {
                     <CButtons num={dataNum} />
                 </div>
                 <div className='ash-color b-carousel'>
-                    <BannerCarousel data={data[dataNum]}/>
+                    <BannerCarousel data={data[dataNum]} />
                 </div>
             </div>
         </div>
     );
 };
 
-export default Banner;
+export default React.memo(Banner);

@@ -2,6 +2,7 @@ import React from 'react';
 import CarouselButton from './CarouselButton';
 
 const CButtons = ({num}) => {
+    
     return (
         <div>
             <CarouselButton cName={num===0?'c-b-active' : 'c-button'}/>
@@ -11,4 +12,4 @@ const CButtons = ({num}) => {
     );
 };
 
-export default CButtons;
+export default React.memo(CButtons);

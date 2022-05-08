@@ -3,6 +3,7 @@ import './home.css'
 
 const Topbar = () => {
 
+
     return (
         <div className=" top-shadow ash-color">
             <div className="container topbar">
@@ -30,4 +31,4 @@ const Topbar = () => {
     );
 };
 
-export default Topbar;
+export default React.memo(Topbar);

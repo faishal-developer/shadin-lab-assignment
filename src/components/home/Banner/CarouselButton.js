@@ -1,6 +1,7 @@
 import React from 'react';
 
 const CarouselButton = ({cName}) => {
+
     return (
         <div className={cName}>
             
@@ -8,4 +9,4 @@ const CarouselButton = ({cName}) => {
     );
 };
 
-export default CarouselButton;
+export default React.memo(CarouselButton);

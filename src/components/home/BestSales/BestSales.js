@@ -22,4 +22,4 @@ const BestSales = () => {
     );
 };
 
-export default BestSales;
+export default React.memo(BestSales);

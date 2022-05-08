@@ -13,7 +13,6 @@ const LoginLayOut = () => {
     }
     useEffect(()=>{
         if (logOrRegister === '/auth') {
-            console.log('ggg');
             navigate('/auth/login')
         }
     },[logOrRegister,navigate])

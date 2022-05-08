@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import { ThemeContext } from "./Context";
+import useLStorage from "./useLStorage";
 
 const useFunc = () => {
     const { cart, setCart,setSize,setBrand,size,brand} = useContext(ThemeContext) 
+    const { addNewItem,deleteItem} =useLStorage()
     const findP = (product,products) =>{
         return products.find((v, i) => v.id === product.id)
     }
@@ -12,8 +14,8 @@ const useFunc = () => {
         if(isExist){
             alert('This product already added in cart')
         }else{
-            console.log(cart,product);
             setCart([...cart,product])
+            addNewItem(product.id)
         }
     }
 

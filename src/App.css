@@ -153,6 +153,9 @@ a {
   border-radius: 30px;
 }
 
+button {
+  border: none
+}
 
 .input {
   width: 120px;

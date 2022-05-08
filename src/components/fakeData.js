@@ -1,6 +1,5 @@
 import image1 from '../images/homeProduct.png'
 import image2 from '../images/Product2.png'
-import image3 from '../images/Product3.png'
 import image4 from '../images/Product4.png'
 import hat from '../images/hat.png'
 import trouser from '../images/Trouser.png'
@@ -141,7 +140,7 @@ const fakeData = [
         id: 12,
         name: 'Reebok Track Jacket',
         price: 160,
-        image: image3,
+        image: image4,
         moreImage: [image1, hat, trouser],
         sizes: ['s', 'xl'],
         color: ['red', 'pink', 'green'],
@@ -284,7 +283,7 @@ const fakeData = [
             id: 24,
             name: 'Reebok Track Jacket',
             price: 90,
-            image: image3,
+            image: image4,
             moreImage: [image1, hat, trouser],
             sizes: ['s', 'xl'],
             color: ['red', 'pink', 'green'],
@@ -307,7 +306,7 @@ const fakeData = [
             id: 26,
             name: 'Reebok Track Jacket',
             price: 90,
-            image: image3,
+            image: image4,
             moreImage: [image1, hat, trouser],
             sizes: ['s', 'xl'],
             color: ['red', 'pink', 'green'],

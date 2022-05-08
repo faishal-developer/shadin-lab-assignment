@@ -10,6 +10,7 @@ const Navbar = (props) => {
     const { cart } = useContext(ThemeContext)
     const {pathname} = useLocation()
 
+
     const myfunction=()=>{
         setShowNavbar(!shownavbar)
     }
@@ -49,7 +50,7 @@ const Navbar = (props) => {
                     </div>
                     <div className="icons top-cart-num ash-color">
                         <p>{cart?.length}</p>
-                        <a className="ash-color" href="#"><i className="fa-solid fa-cart-shopping"></i></a>
+                        <Link className="ash-color" to='/cartDetails'><i className="fa-solid fa-cart-shopping"></i></Link>
                     </div>
                 </div>
             </nav>
@@ -57,4 +58,4 @@ const Navbar = (props) => {
     );
 };
 
-export default Navbar;
+export default React.memo(Navbar);
