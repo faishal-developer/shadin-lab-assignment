@@ -10,11 +10,11 @@ const Login = () => {
     const icon2 = <i className="fa-solid fa-key"></i>
     return (  
         <>                    
-            <Input icon={icon1} type='text' place='Your Name' name='name' />
+            <Input icon={icon1} type='email' place='Your email' name='email' />
             <Input icon={icon2} type='password' place='Password' name='password' />
             <input type='submit' />
             <p>
-                <Link to='/auth/register'>Not Registered Yet? Please go to Register page</Link >
+                <Link to='/register'>Not Registered Yet? Please go to Register page</Link >
             </p>
         </>             
     );

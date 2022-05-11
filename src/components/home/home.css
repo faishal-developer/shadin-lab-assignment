@@ -241,7 +241,7 @@
 .products-grid {
     -webkit-animation-name: fade;
     -webkit-animation-duration: 3s;
-    animation: fade 3s ease 3s infinite;
+    animation: fade 3.01s ease 3s infinite;
     /* animation-duration: 1s;
     animation-delay: 3.1s;
     animation-timing-function: ease;

@@ -2,17 +2,31 @@ import React, { useContext, useState } from 'react';
 import logo from '../../images/logo.png'
 import { Link, useLocation } from "react-router-dom";
 import { ThemeContext } from '../hooks/Context';
+import useFirebase from '../hooks/useFirebase';
 
 
 const Navbar = (props) => {
     const [inputTrue,setInputTrue] = useState(false)
     const [shownavbar,setShowNavbar] = useState(false)
-    const { cart } = useContext(ThemeContext)
+    const { logOut} = useFirebase()
+    const { cart, user, isLoading } = useContext(ThemeContext)
     const {pathname} = useLocation()
 
 
     const myfunction=()=>{
         setShowNavbar(!shownavbar)
+    }
+    const userOrNot=()=>{
+        if(user.email){
+            return <>
+                <span className='orange-color'>{user.displayName}</span>
+                <button onClick={logOut}>Log Out</button>
+            </>
+        }else{
+            return <Link className="ash-color" to='/login'>
+                <i className="fa-solid fa-user"></i>
+                </Link>
+        }
     }
     const barAndCancel=()=>{
         if (shownavbar) return <i style={{fontSize:'21px'}} className="fa-solid fa-xmark"></i>
@@ -46,7 +60,9 @@ const Navbar = (props) => {
                         </div>
                     </div>
                     <div className="icons ash-color">
-                        <Link className="ash-color" to='/auth/login'><i className="fa-solid fa-user"></i></Link>
+                        {
+                          isLoading? 'loading...' :  userOrNot()
+                        }
                     </div>
                     <div className="icons top-cart-num ash-color">
                         <p>{cart?.length}</p>

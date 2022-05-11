@@ -22,7 +22,7 @@ function App() {
             <Route path="singleProduct/:id" element={<SingleProduct />} />
             <Route path="cartDetails" element={<CartDetails />} />
         </Route>
-        <Route path="auth" element={<LoginLayOut/>}>
+        <Route path="/" element={<LoginLayOut/>}>
           <Route path='login' element={<Login/>}/>
           <Route path='register' element={<Registration/>}/>
         </Route>

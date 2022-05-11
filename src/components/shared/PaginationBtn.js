@@ -2,9 +2,8 @@ import React, { useContext } from 'react';
 import { ThemeContext } from '../hooks/Context';
 import './footer.css'
 
-const PaginationBtn = ({value,totalPage}) => {
-    const {page,setPage} = useContext(ThemeContext)
-
+const PaginationBtn = ({page,setPage,value,totalPage}) => {
+    // const {page,setPage} = useContext(ThemeContext)
     const isDisable = totalPage<value || typeof value === 'string'
     let clsName = isDisable? 'pagi-btn p-btn-disable' : 'pagi-btn p-btn-active'
     const cls2 = typeof value === 'string' &&  'pagi-btn p-btn-disable';
