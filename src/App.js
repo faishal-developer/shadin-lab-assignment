@@ -9,6 +9,7 @@ import LayOut from './components/Layout/LayOut';
 import LoginLayOut from './components/Layout/LoginLayOut';
 import Registration from './components/login/Registration';
 import CartDetails from './pages/CartDetails';
+import AddData from './components/AddData/AddData';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path="products" element={<Products />} />
             <Route path="singleProduct/:id" element={<SingleProduct />} />
             <Route path="cartDetails" element={<CartDetails />} />
+            <Route path='addData' element={<AddData />} />
         </Route>
         <Route path="/" element={<LoginLayOut/>}>
           <Route path='login' element={<Login/>}/>

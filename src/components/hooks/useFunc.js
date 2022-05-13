@@ -9,6 +9,8 @@ const useFunc = () => {
         return products.find((v, i) => v.id === product.id)
     }
 
+    
+
     const updateCart=(product)=>{   
         const isExist = findP(product,cart)
         if(isExist){

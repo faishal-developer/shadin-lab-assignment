@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import fakeData from '../components/fakeData';
 import NewsLetter from '../components/home/NewsLetter';
 import ProductShow from '../components/ProductShow/ProductShow';
 import Products from '../components/shared/Products'
 import LayOut from '../components/Layout/LayOut';
+import { ThemeContext } from '../components/hooks/Context';
 
 const SingleProduct = () => {
     let {id} = useParams()
+    let {data:products} =useContext(ThemeContext)
 
-    const product = fakeData.find((v, i) => v?.id == id)
+    console.log(products);
+    const product = products?.data?.find((v, i) => v?.id == id) || fakeData.find((v, i) => v?.id == id)
     const data={
         head1:'RELATED',
         head2:'PRODUCTS',

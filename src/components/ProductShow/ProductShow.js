@@ -18,18 +18,22 @@ const ProductShow = ({product}) => {
     useEffect(()=>{
         updateQuantity(product, quantity)
     },[quantity])
+
+    const getImage = (image)=>{
+        return !product?.isBase64 ? image : `data:image/png;base64,${image}` 
+    }
     return (
         <div style={{background:'white'}}>
         <div className='container product-show'>
             <div>
                 <figure className='figure'>
-                        <img className='img-wd-90 ' src={product?.moreImage[moreImage]} alt='product'/>
+                        <img className='img-wd-90 ' src={getImage(product?.moreImage[moreImage])} alt='product'/>
                 </figure>
                 <div className='d-flex-al-center'>
                     {
                         product?.moreImage.map((img,i)=>(
                             <figure onClick={()=>setMoreImage(i)} key={i} className='figure p-show-flex-figure'>
-                                <img className='img-h-w-60' src={img} alt='product'/>
+                                <img className='img-h-w-60' src={getImage(img) } alt='product'/>
                                 <div className={moreImage === i ?'p-show-image-blend':''}></div>
                             </figure>
                         ))

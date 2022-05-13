@@ -12,9 +12,11 @@ const Context = ({children}) => {
     const [priceSlider, setPriceSlider] = useState([100,250]) 
     const [page,setPage] = useState(1)
     const [lUser,setLUser] = useState({})
+    const [newProduct,setNewProduct] = useState({})
     const [dataLoading,setDataLoading]=useState(false)
     const [isLoading,setIsLoading] = useState(false)
     const [quantity,setQuantity] = useState(3)
+    const [error,setError] = useState({})
     const [pagiBtnValue, setPagiBtnValue] = useState({ 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6,t:2,dot:false})
     const { getItem } = useLStorage()
 
@@ -29,34 +31,41 @@ const Context = ({children}) => {
         })
        setCart(newCart);
     },[])
-    //  kklll
+
+    useEffect(()=>{
+        setPage(1)
+    },[priceSlider,size])
     return (
         <ThemeContext.Provider 
             value={{
-                 quantity,
-                 setQuantity,
-                 dataLoading,
-                 setDataLoading,
-                 isLoading,
-                 setIsLoading,
-                 lUser,
-                 setLUser,
-                 user,
-                 setUser,
-                 pagiBtnValue,
-                 setPagiBtnValue,
-                 page,
-                 setPage,
-                 data, 
-                 setData,
-                 cart,
-                 setCart,
-                 size,
-                 setSize,
-                 brand,
-                 setBrand,
-                 priceSlider,
-                 setPriceSlider
+                error,
+                setError,
+                newProduct,
+                setNewProduct,
+                quantity,
+                setQuantity,
+                dataLoading,
+                setDataLoading,
+                isLoading,
+                setIsLoading,
+                lUser,
+                setLUser,
+                user,
+                setUser,
+                pagiBtnValue,
+                setPagiBtnValue,
+                page,
+                setPage,
+                data, 
+                setData,
+                cart,
+                setCart,
+                size,
+                setSize,
+                brand,
+                setBrand,
+                priceSlider,
+                setPriceSlider
                 }}
         >
             {children}

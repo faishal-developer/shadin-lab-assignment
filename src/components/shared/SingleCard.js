@@ -1,13 +1,11 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useFunc from '../hooks/useFunc';
 
 const SingleCard = ({ product, pause}) => {
     let navigate = useNavigate();
     const { updateCart,isCarted } = useFunc()
-       
-    
-
+      
     const goToSingleProduct=(id)=>{
         navigate(`/singleProduct/${product?.id}`)
     } 
@@ -15,13 +13,15 @@ const SingleCard = ({ product, pause}) => {
         e.stopPropagation()
         updateCart(product)
     },[product,updateCart])
+
+    const src =!product?.isBase64? product?.image : `data:image/png;base64,${product.image}`;
     
     return (
         <div onClick={goToSingleProduct} className="single-card">
             <figure>
                 <img 
                     className='card-image max-wd max-ht-100' 
-                    src={product?.image} 
+                    src={src} 
                     alt="product"
                 />
             </figure>
@@ -31,7 +31,7 @@ const SingleCard = ({ product, pause}) => {
             <div className='card-p-none'>
             <div className='color-flex'>
                 {
-                    product?.color.map((v, i) => (
+                    product?.color?.map((v, i) => (
                         <div key={i} style={{ background: v }} className='circle'></div>
                     ))
                 }

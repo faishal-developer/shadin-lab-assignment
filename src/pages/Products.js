@@ -1,20 +1,22 @@
 import React, { useContext, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../components/hooks/Context';
 import useRequest from '../components/hooks/useRequest';
 import LayOut from '../components/Layout/LayOut';
 import ProductsAll from '../components/Products/ProductsAll';
 
 const Products = () => {
-    const { requestFunc} = useRequest('kk')
-    const {page,setPage,size,brand,priceSlider} = useContext(ThemeContext)
+    const { requestFunc,getUrl} = useRequest('kk')
+    const {page,size,brand,priceSlider} = useContext(ThemeContext)
+    const navigate=useNavigate()
     const { search } = useLocation();
     const pageNum = new URLSearchParams(search).get('page');
 
 
     useEffect(() => {
+        console.log('from products page');
         requestFunc()
-        console.log(page,size,brand,priceSlider);
+        navigate(getUrl())
     }, [page,size, brand, priceSlider])
 
     return (

@@ -9,8 +9,9 @@ const Pagination = () => {
     const { data,setQuantity, pagiBtnValue,setPage, page,setPagiBtnValue} =useContext(ThemeContext)
     const { handlePagiByData, handleDot, nextOrPrev} = useFilter()
     const { search } = useLocation();
-    const quantity = new URLSearchParams(search).get('limit') || 3;
-    const pageNum = new URLSearchParams(search).get('page') || 3;
+    const { requestFunc} = useRequest()
+    const quantity = new URLSearchParams(search).get('limit') ;
+    const pageNum = new URLSearchParams(search).get('page');
 
     
     useEffect(() => {
@@ -21,7 +22,6 @@ const Pagination = () => {
         setQuantity(Number(quantity))
     }, [data.total,quantity])
     useEffect(()=>{
-        if(Number(pageNum)===3) return
          setPage(Number(pageNum));
     },[pageNum])
 

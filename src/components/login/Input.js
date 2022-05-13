@@ -1,12 +1,19 @@
-import React from 'react';
 import useForm from '../hooks/useForm';
 
-const Input = ({type,place,name,icon}) => {
+const Input = ({type,place,name,icon,data,setData,required,file}) => {
     const { handleBlur} = useForm()
+
     return (
         <>
-            <span className='input-icon'>{icon}</span>
-            <input required onBlur={(e)=>handleBlur(e)} type={type} placeholder={place} name={name}/>
+            {icon ? <span className='input-icon'>{icon}</span>:''}
+            <input 
+                required={required} 
+                onChange={(e)=>handleBlur(e,data,setData,file)} 
+                type={type} 
+                placeholder={place} 
+                // value={data[name]}
+                name={name}
+            />
             <br/>
         </>
     )
