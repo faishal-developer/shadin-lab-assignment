@@ -3,40 +3,43 @@ import fakeData from '../fakeData';
 import useLStorage from './useLStorage';
 
 export const ThemeContext = React.createContext();
-const Context = ({children}) => {
-    const [user,setUser] = useState({})
-    const [data,setData] = useState([])
-    const [cart,setCart] = useState([])
+const Context = ({ children }) => {
+    const [user, setUser] = useState({})
+    const [data, setData] = useState([])
+    const [cart, setCart] = useState([])
     const [size, setSize] = useState([])
     const [brand, setBrand] = useState([])
-    const [priceSlider, setPriceSlider] = useState([100,250]) 
-    const [page,setPage] = useState(1)
-    const [lUser,setLUser] = useState({})
-    const [newProduct,setNewProduct] = useState({})
-    const [dataLoading,setDataLoading]=useState(false)
-    const [isLoading,setIsLoading] = useState(false)
-    const [quantity,setQuantity] = useState(3)
-    const [error,setError] = useState({})
-    const [pagiBtnValue, setPagiBtnValue] = useState({ 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6,t:2,dot:false})
+    const [priceSlider, setPriceSlider] = useState([100, 250])
+    const [page, setPage] = useState(1)
+    const [lUser, setLUser] = useState({})
+    const [newProduct, setNewProduct] = useState({})
+    const [dataLoading, setDataLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    const [quantity, setQuantity] = useState(3)
+    const [error, setError] = useState({})
+    const [pagiBtnValue, setPagiBtnValue] = useState({ 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, t: 2, dot: false })
     const { getItem } = useLStorage()
 
-    useEffect(()=>{
+    useEffect(() => {
         let prev = getItem('cart')
-        if(prev===undefined)return
-        let newCart=[]
-        fakeData.forEach((v,i)=>{
+        if (prev === undefined) return
+        let newCart = []
+        fakeData.forEach((v, i) => {
             if (prev?.includes(v.id)) {
                 newCart.push(v)
             }
         })
-       setCart(newCart);
-    },[])
+        setCart(newCart);
+    }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         setPage(1)
-    },[priceSlider,size])
+        // setSize([])
+        // setBrand([])
+        // setPriceSlider([100,250])
+    }, [priceSlider, size, brand])
     return (
-        <ThemeContext.Provider 
+        <ThemeContext.Provider
             value={{
                 error,
                 setError,
@@ -56,7 +59,7 @@ const Context = ({children}) => {
                 setPagiBtnValue,
                 page,
                 setPage,
-                data, 
+                data,
                 setData,
                 cart,
                 setCart,
@@ -66,7 +69,7 @@ const Context = ({children}) => {
                 setBrand,
                 priceSlider,
                 setPriceSlider
-                }}
+            }}
         >
             {children}
         </ThemeContext.Provider>

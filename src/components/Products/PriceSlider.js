@@ -8,7 +8,7 @@ const PriceSlider = ({setValue}) => {
         <div className='price-slider'>
             <RangeSlider
                 max={250}
-                min={100}
+                min={100} 
                 defaultValue={[100, 250]}
                 style={{ color:'#42535F'}}
                 constraint={([start, end]) => start <= 167 && end >= 177}

@@ -3,100 +3,120 @@ import { ThemeContext } from '../hooks/Context';
 import useForm from '../hooks/useForm';
 import Input from '../login/Input';
 import './addData.css'
+import { useFormik } from 'formik';
+import validate from './validation';
+import useRequest from '../hooks/useRequest';
 
+let initialValues = {
+    name: '',
+    id: 1,
+    price: 1,
+    shortDes: '',
+    des: '',
+    image: '',
+    image1: '',
+    image2: '',
+    image3: ''
+}
 const AddData = () => {
-    const {newProduct,setNewProduct,error} = useContext(ThemeContext)
-    const { handleAddNewProduct, handleBlur} = useForm()
+    // const {newProduct,setNewProduct,error} = useContext(ThemeContext)
+    // const { handleAddNewProduct, handleBlur} = useForm()
+    const { requestAdd} = useRequest()
+    const formik = useFormik({
+        initialValues:initialValues
+         ,validate,
+        onSubmit: (values,e) => {
+            requestAdd(values,formik.setValues,initialValues)
+         },
+    });
     
     return (
         <div className='flex j-c-center a-i-center my-10vh'>
             <div>
                 <h2>Add Data</h2>
-                <form onSubmit={(e)=>handleAddNewProduct(e)}>
-                    <Input 
-                        data={newProduct} 
-                        setData={setNewProduct} 
-                        required={true} 
+                <form onSubmit={(e)=>formik.handleSubmit(e)}>
+                    <input  
+                        onChange={formik.handleChange}
                         type="text" 
-                        place="product Name" 
+                        placeholder="product Name" 
                         name="name"
+                        value={formik.values.name}
                     />
-                    {error?.name ? <p className='err-color'>{error?.name}</p> : ''} 
+                    {formik.errors.name ? <div>{formik.errors.name}</div> : null}
                     <br />
-                    <Input 
-                        data={newProduct} 
-                        setData={setNewProduct} 
-                        required={true} 
+                    <input  
+                        onChange={formik.handleChange}
                         type="number" 
-                        place="product id" 
+                        placeholder="product id" 
                         name="id"
+                        value={formik.values.id}
                     />
+                    {formik.errors.id ? <div>{formik.errors.id}</div> : null}
                     <br />
-                    <Input 
-                        data={newProduct} 
-                        setData={setNewProduct} 
-                        required={true} 
+                    <input  
+                        onChange={formik.handleChange}
                         type="number" 
-                        place="product price" 
+                        placeholder="product price" 
                         name="price"
+                        value={formik.values.price}
                     />
-                    {error?.price ? <p className='err-color'>{error?.price}</p> : ''} 
-
+                    {formik.errors.price ? <div>{formik.errors.price}</div> : null}
                     <br />
-                    <Input 
-                        data={newProduct} 
-                        setData={setNewProduct} 
-                        required={true} 
+                    <input  
+                        onChange={formik.handleChange}
                         type="text" 
-                        place="shortDes" 
+                        placeholder="shortDes" 
                         name="shortDes"
+                        value={formik.values.shortDes}
                     />
-                    {error?.shortDes ? <p className='err-color'>{error?.shortDes}</p> : ''} 
+                    {formik.errors.shortDes ? <div>{formik.errors.shortDes}</div> : null}
                     <br />
                     <textarea 
-                        required={true} 
-                        onBlur={(e) => handleBlur(e,newProduct,setNewProduct)}
+                        onChange={formik.handleChange}
                         type="text" 
                         placeholder="description" 
                         name="des"
+                        value={formik.values.des}
                     />
-                    {error?.des ? <p className='err-color'>{error?.des}</p> : ''} 
+                    {formik.errors.des ? <div>{formik.errors.des}</div> : null}
                     <br />
-                    <Input 
-                        data={newProduct} 
-                        setData={setNewProduct} 
-                        required={true} 
+                    <input  
                         type="file" 
+                        onChange={(event) => {
+                            formik.setFieldValue("image", event.currentTarget.files[0]);
+                        }}
                         file={true}
-                        place="product Name" 
+                        placeholder="product Name" 
                         name="image"
                     />
-                    {error?.image ? <p className='err-color'>{error?.image}</p> : ''} 
-
+                    {formik.errors.image ? <div>{formik.errors.image}</div> : null}
                     <br />
-                    <Input 
-                        data={newProduct} 
-                        required={true}
-                        setData={setNewProduct}
+                    <input  
                         type="file" 
+                        onChange={(event) => {
+                            formik.setFieldValue("image1", event.currentTarget.files[0]);
+                        }}
                         file={true}
-                        place="product Name" 
+                        placeholder="product Name" 
                         name="image1"
-                    /><br />
-                    <Input 
-                        data={newProduct} 
-                        setData={setNewProduct} 
+                    />
+                    {formik.errors.image1 ? <div>{formik.errors.image1}</div> : null}<br />
+                    <input  
                         type="file" 
+                        onChange={(event) => {
+                            formik.setFieldValue("image2", event.currentTarget.files[0]);
+                        }}
                         file={true}
-                        place="product Name" 
+                        placeholder="product Name" 
                         name="image2"
                     /><br />
-                    <Input 
-                        data={newProduct} 
-                        setData={setNewProduct} 
+                    <input  
                         type="file" 
+                        onChange={(event) => {
+                            formik.setFieldValue("image3", event.currentTarget.files[0]);
+                        }}
                         file={true}
-                        place="product Name" 
+                        placeholder="product Name" 
                         name="image3"
                     /><br />
                     <input type='submit' className='bg-orange' />

@@ -1,19 +1,31 @@
 import React, { useContext, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../hooks/Context';
-import useFilter from '../hooks/useFilter';
+import useRequest from '../hooks/useRequest';
 import Pagination from '../shared/Pagination';
 import SingleCard from '../shared/SingleCard';
 
 const FilteredProduct = () => {
-    const {data,size,dataLoading,brand,setPage,priceSlider} = useContext(ThemeContext)
-    const {sizeFilter} = useFilter()
+    const { data, dataLoading,size,page, setPage,brand,priceSlider, setPriceSlider,setSize,setBrand} = useContext(ThemeContext)
+    const location = useLocation()
+    const navigate = useNavigate()
+    const { search } = useLocation();
+    const {requestFunc,getUrl} = useRequest()
+    const limit = new URLSearchParams(search).get('limit');
 
     // useEffect(() => {
     //     sizeFilter()
     //     setPage(1)
-    // }, [size, brand,priceSlider])
-        
-    // console.log(data);
+    // }, [size, brand,priceSlider])                               
+        useEffect(()=>{
+            console.log('from filtered product');
+            setPriceSlider([100,250])
+        //    setPage(1)
+            setBrand([])
+            setSize([])
+            requestFunc(limit, page, [], [], [100, 250])
+            navigate(getUrl(limit, page, [], [], [100, 250]))
+        },[location.pathname])
     if ((!data?.data || data?.data?.length < 1) && dataLoading===false) {
         return <h1>No Product found</h1>
     }

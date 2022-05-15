@@ -2,16 +2,12 @@ import React, { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ThemeContext } from '../hooks/Context';
 import useFilter from '../hooks/useFilter';
-import useRequest from '../hooks/useRequest';
 import PaginationBtn from './PaginationBtn';
 
 const Pagination = () => {
-    const { data,setQuantity, pagiBtnValue,setPage, page,setPagiBtnValue} =useContext(ThemeContext)
+    const { data,quantity,setQuantity, pagiBtnValue,setPage, page,setPagiBtnValue} =useContext(ThemeContext)
     const { handlePagiByData, handleDot, nextOrPrev} = useFilter()
-    const { search } = useLocation();
-    const { requestFunc} = useRequest()
-    const quantity = new URLSearchParams(search).get('limit') ;
-    const pageNum = new URLSearchParams(search).get('page');
+    
 
     
     useEffect(() => {
@@ -20,10 +16,8 @@ const Pagination = () => {
         setPagiBtnValue(newPagi)
         handlePagiByData(newPagi)
         setQuantity(Number(quantity))
-    }, [data.total,quantity])
-    useEffect(()=>{
-         setPage(Number(pageNum));
-    },[pageNum])
+    }, [data.total])
+   
 
     const nextDisable = pagiBtnValue[4] <= pagiBtnValue[3] + 1 || page === pagiBtnValue.t
     return (

@@ -1,11 +1,8 @@
 import { useContext } from "react";
 import { ThemeContext } from "./Context";
-import fakeData from "../fakeData";
-import useFunc from "./useFunc";
 
 const useFilter = () => {
-    const { setData,setPage, page,data, priceSlider, pagiBtnValue, setPagiBtnValue, size, brand } = useContext(ThemeContext)
-    const { findP } = useFunc()
+    const { setPage, page, pagiBtnValue, setPagiBtnValue} = useContext(ThemeContext)
 
     // const priceFilter=(Data)=>{
     //     let newData = Data.filter(v=>{
@@ -74,14 +71,15 @@ const useFilter = () => {
                 setPage(page + 1)
             }
         }else{
+            console.log(page - 1 < pagiBtn[4] && page - 1 > pagiBtn[3],pagiBtn[3]);
             if(page-1<=3){
                 pagiBtn[1] = 1
                 pagiBtn[2] = 2
                 pagiBtn[3] =3
-            }else if(page-1<pagiBtn[4] && page-1>pagiBtn[3]){
-                pagiBtn[1] = pagiBtn[4]-3
-                pagiBtn[2] = pagiBtn[4]-2
-                pagiBtn[3] = pagiBtn[4]-1
+            }else if(page-1<pagiBtn[4]){
+                pagiBtn[1] = pagiBtn[3]-3
+                pagiBtn[2] = pagiBtn[3]-2
+                pagiBtn[3] = pagiBtn[3]-1
             }
             setPage(page-1)
         }
