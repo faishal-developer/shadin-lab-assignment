@@ -5,7 +5,7 @@ const useDebounce = () => {
         if(timer) clearTimeout(timer)
         timer = setTimeout(()=>{
             func()
-        },100)
+        },time)
     }
 };
 

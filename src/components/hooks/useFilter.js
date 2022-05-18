@@ -51,7 +51,6 @@ const useFilter = () => {
     let defaultPagi = { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, t: 2,dot1:false,dot2:false }
 
     const dotExistOrNot = (pagiBtn)=>{
-        console.log(pagiBtn);
         if (pagiBtn[2] - pagiBtn[1] > 1) {
             pagiBtn.dot1 = true
         }else{
@@ -78,9 +77,7 @@ const useFilter = () => {
     }
 
     const handleDot=(isNext)=>{
-        console.log('log from handle dot');
         let differ =isNext? pagiBtnValue[5]-pagiBtnValue[4] : pagiBtnValue[2]-pagiBtnValue[1]
-        console.log(differ);
         if(differ<2){
             return
         }else if(differ<3){
@@ -111,7 +108,6 @@ const useFilter = () => {
         pagiBtn[6] = pagiBtn.t
         if(!pageSetByUrl) handleLastButton(pagiBtn)
         let newPagi = dotExistOrNot(pagiBtn)
-        console.log(dotExistOrNot(pagiBtn));
         setPagiBtnValue(newPagi)
     }
     let handleLastButton=(pagi,t)=>{

@@ -11,6 +11,7 @@ const Pagination = () => {
 
     
     useEffect(() => {
+        console.log('from pagination');
         let newPagi = {...pagiBtnValue}
         newPagi.t = Math.ceil(data.total/Number(quantity))||1
         // setPagiBtnValue(newPagi)
