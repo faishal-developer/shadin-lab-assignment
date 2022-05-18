@@ -16,7 +16,7 @@ const Context = ({ children }) => {
     const [newProduct, setNewProduct] = useState({})
     const [dataLoading, setDataLoading] = useState(true)
     const [isLoading, setIsLoading] = useState(false)
-    const [quantity, setQuantity] = useState(3)
+    const [quantity, setQuantity] = useState(2)
     const [error, setError] = useState({})
     const [pagiBtnValue, setPagiBtnValue] = useState({ 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, t: 2, dot1: false,dot2:false })
     const { getItem } = useLStorage()

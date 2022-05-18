@@ -106,7 +106,10 @@ const useFilter = () => {
         pagiBtn[4] =pageSetByUrl && page!==1? page+2:4
         pagiBtn[5] = pagiBtn.t-1
         pagiBtn[6] = pagiBtn.t
-        if(!pageSetByUrl) handleLastButton(pagiBtn)
+        if(!pageSetByUrl){
+            handleLastButton(pagiBtn,pagiBtn.t-2)
+            return
+        } 
         let newPagi = dotExistOrNot(pagiBtn)
         setPagiBtnValue(newPagi)
     }
@@ -116,6 +119,7 @@ const useFilter = () => {
         pagiBtn[3] = t-1
         pagiBtn[4] = t
         let newPagi = dotExistOrNot(pagiBtn)
+        console.log(newPagi);
         setPagiBtnValue(newPagi)
         return newPagi
     }
