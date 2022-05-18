@@ -12,20 +12,19 @@ const FilteredProduct = () => {
     const { search } = useLocation();
     const {requestFunc,getUrl} = useRequest()
     const limit = new URLSearchParams(search).get('limit');
+    const pageNum = new URLSearchParams(search).get('page');
+    const urlSize = new URLSearchParams(search).get('size');
+    const urlBrand = new URLSearchParams(search).get('brand');
+    const urlPrice = new URLSearchParams(search).get('price');
 
     // useEffect(() => {
     //     sizeFilter()
     //     setPage(1)
     // }, [size, brand,priceSlider])                               
         useEffect(()=>{
-            console.log('from filtered product');
-            setPriceSlider([100,250])
-        //    setPage(1)
-            setBrand([])
-            setSize([])
-            requestFunc(limit, page, [], [], [100, 250])
-            navigate(getUrl(limit, page, [], [], [100, 250]))
-        },[location.pathname])
+            requestFunc(limit, pageNum, urlSize, urlBrand, urlPrice)
+            // navigate(getUrl(limit, page, [], [], [100, 250]))
+        },[location.pathname,limit,pageNum,urlSize,urlBrand,urlPrice])
     if ((!data?.data || data?.data?.length < 1) && dataLoading===false) {
         return <h1>No Product found</h1>
     }

@@ -7,7 +7,6 @@ const LoginLayOut = (props) => {
     const location = useLocation()
     const { handleSubmit} = useForm()
     
-    console.log(props.location);
     const logOrRegister = location?.pathname
     // useEffect(()=>{
     //     if (logOrRegister === '/auth') {

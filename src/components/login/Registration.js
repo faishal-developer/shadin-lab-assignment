@@ -4,14 +4,14 @@ import { ThemeContext } from '../hooks/Context';
 import Input from './Input';
 
 const Registration = () => {
-    const [lUser,setLUser] = useContext(ThemeContext)
+    const {lUser,setLUser} = useContext(ThemeContext)
     
     const icon1 = <i className="fa-solid fa-user"></i>
     const icon2 = <i className="fa-solid fa-key"></i>
     const icon3 = <i className="fa-solid fa-envelope"></i>
     return (
         <>
-            <Input
+            <Input 
                 data={lUser}
                 required={true}
                 setData={setLUser} 

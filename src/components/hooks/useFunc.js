@@ -35,7 +35,6 @@ const useFunc = () => {
 
     const handleCheck = (isSize,e)=>{
         let func = isSize === true ? [setSize,size] : [setBrand,brand]
-        console.log(func);
         if (e.target.checked) {
             let newSize = [...func[1], e.target.value]
             func[0](newSize)

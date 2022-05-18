@@ -11,7 +11,6 @@ const useForm = () => {
     const handleBlur=(e,data,setData,file)=>{
         let newUser = { ...data }
        if(file){
-           console.log(e.target.files[0]);
             newUser[e.target.name] = e.target.files[0]
            setData(newUser)
            return 
@@ -52,9 +51,7 @@ const useForm = () => {
 
     const handleSubmit=(e,location,navigate)=>{
         e.preventDefault()
-        console.log(location);
         if(location?.pathname==='/login'){
-            console.log('from login');
             logInWithPass(navigate)
         }
         else if (location?.pathname === '/register'){

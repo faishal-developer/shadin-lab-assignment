@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { RangeSlider } from 'rsuite'
 import "rsuite/dist/rsuite.min.css";
+import { ThemeContext } from '../hooks/Context';
 
 const PriceSlider = ({setValue}) => {
+    let {priceSlider} = useContext(ThemeContext)
     
     return (
         <div className='price-slider'>
@@ -11,7 +13,8 @@ const PriceSlider = ({setValue}) => {
                 min={100} 
                 defaultValue={[100, 250]}
                 style={{ color:'#42535F'}}
-                constraint={([start, end]) => start <= 167 && end >= 177}
+                value={priceSlider}
+                constraint={([start, end]) => start <= 250 && end >= 100}
                 onChange={(v)=>setValue(v)}
             />
         </div>

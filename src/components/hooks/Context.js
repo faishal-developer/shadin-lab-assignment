@@ -4,6 +4,7 @@ import useLStorage from './useLStorage';
 
 export const ThemeContext = React.createContext();
 const Context = ({ children }) => {
+    const [windowBack,setWindowBack] = useState(true)
     const [user, setUser] = useState({})
     const [data, setData] = useState([])
     const [cart, setCart] = useState([])
@@ -13,11 +14,11 @@ const Context = ({ children }) => {
     const [page, setPage] = useState(1)
     const [lUser, setLUser] = useState({})
     const [newProduct, setNewProduct] = useState({})
-    const [dataLoading, setDataLoading] = useState(false)
+    const [dataLoading, setDataLoading] = useState(true)
     const [isLoading, setIsLoading] = useState(false)
     const [quantity, setQuantity] = useState(3)
     const [error, setError] = useState({})
-    const [pagiBtnValue, setPagiBtnValue] = useState({ 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, t: 2, dot: false })
+    const [pagiBtnValue, setPagiBtnValue] = useState({ 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, t: 2, dot1: false,dot2:false })
     const { getItem } = useLStorage()
 
     useEffect(() => {
@@ -32,15 +33,17 @@ const Context = ({ children }) => {
         setCart(newCart);
     }, [])
 
-    useEffect(() => {
-        setPage(1)
-        // setSize([])
-        // setBrand([])
-        // setPriceSlider([100,250])
-    }, [priceSlider, size, brand])
+    // useEffect(() => {
+    //     setPage(1)
+    //     // setSize([])
+    //     // setBrand([])
+    //     // setPriceSlider([100,250])
+    // }, [priceSlider, size, brand])
     return (
         <ThemeContext.Provider
             value={{
+                windowBack,
+                setWindowBack,
                 error,
                 setError,
                 newProduct,

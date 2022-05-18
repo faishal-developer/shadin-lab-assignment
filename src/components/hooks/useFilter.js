@@ -48,84 +48,87 @@ const useFilter = () => {
         
     // }
 
-    let defaultPagi = { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, t: 2,dot:false }
+    let defaultPagi = { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, t: 2,dot1:false,dot2:false }
 
     const dotExistOrNot = (pagiBtn)=>{
-        if (pagiBtn.t - pagiBtn[3] <= 3) {
-            pagiBtn.dot = false
+        console.log(pagiBtn);
+        if (pagiBtn[2] - pagiBtn[1] > 1) {
+            pagiBtn.dot1 = true
         }else{
-            pagiBtn.dot = true
+            pagiBtn.dot1 = false
         }
+        if(pagiBtn[5]-pagiBtn[4]>1) pagiBtn.dot2= true
+        else pagiBtn.dot2 =false
         return pagiBtn
     }
 
-    const nextOrPrev = (isNext,v,dot) =>{
+    const nextOrPrev = (isNext,v) =>{
         let pagiBtn = { ...pagiBtnValue }
         if (isNext) {
-            pagiBtn[1] = pagiBtn[1]+v
             pagiBtn[2] = pagiBtn[2]+v
             pagiBtn[3] = pagiBtn[3]+v
-            if(dot){
-                setPage(pagiBtn[1])
-            }else{
-                setPage(page + 1)
-            }
+            pagiBtn[4] = pagiBtn[4] + v
         }else{
-            console.log(page - 1 < pagiBtn[4] && page - 1 > pagiBtn[3],pagiBtn[3]);
-            if(page-1<=3){
-                pagiBtn[1] = 1
-                pagiBtn[2] = 2
-                pagiBtn[3] =3
-            }else if(page-1<pagiBtn[4]){
-                pagiBtn[1] = pagiBtn[3]-3
-                pagiBtn[2] = pagiBtn[3]-2
-                pagiBtn[3] = pagiBtn[3]-1
-            }
-            setPage(page-1)
+            pagiBtn[2] = pagiBtn[2] - v
+            pagiBtn[3] = pagiBtn[3] - v
+            pagiBtn[4] = pagiBtn[4] - v
         }
         
         setPagiBtnValue(dotExistOrNot(pagiBtn))
     }
 
-    const handleDot=()=>{
-        let differ = pagiBtnValue[4]-pagiBtnValue[3]
+    const handleDot=(isNext)=>{
+        console.log('log from handle dot');
+        let differ =isNext? pagiBtnValue[5]-pagiBtnValue[4] : pagiBtnValue[2]-pagiBtnValue[1]
+        console.log(differ);
         if(differ<2){
             return
         }else if(differ<3){
-            nextOrPrev(true,1,'dot')
+            nextOrPrev(isNext,1)
             return
-        }else if(differ<4){
-            nextOrPrev(true,2,'dot')
+        }else {
+            nextOrPrev(isNext,2)
             return
-        }else{
-            nextOrPrev(true,3,'dot')
         }
+        // else{
+        //     nextOrPrev(isNext,3)
+        // }
 
     }
 
-    const handlePagiByData = (pagi)=>{
+    const handlePagiByData = (pagi,page)=>{
         let pagiBtn= {...pagi}
-        dotExistOrNot(pagiBtn)
         defaultPagi.t = pagiBtn.t
-        if(pagiBtn.dot===false){
-            setPagiBtnValue(defaultPagi)
+        if(defaultPagi.t<=6){
+             setPagiBtnValue(defaultPagi)
             return
         }
-        pagiBtn[1] = 1
-        // setPage(pagiBtn[1])
-        pagiBtn[2] = 2
-        pagiBtn[3] = 3
-        pagiBtn[4] = pagiBtn.t-2 
+        let pageSetByUrl = page && pagiBtn.t-page>5 
+        pagiBtn[2] =pageSetByUrl && page!==1 ?page: 2
+        pagiBtn[3] = pageSetByUrl && page!==1?page+1:3
+        pagiBtn[4] =pageSetByUrl && page!==1? page+2:4
         pagiBtn[5] = pagiBtn.t-1
         pagiBtn[6] = pagiBtn.t
-        pagiBtn.dot= true
-        setPagiBtnValue(pagiBtn)
+        if(!pageSetByUrl) handleLastButton(pagiBtn)
+        let newPagi = dotExistOrNot(pagiBtn)
+        console.log(dotExistOrNot(pagiBtn));
+        setPagiBtnValue(newPagi)
+    }
+    let handleLastButton=(pagi,t)=>{
+        let pagiBtn={...pagi}
+        pagiBtn[2] = t-2
+        pagiBtn[3] = t-1
+        pagiBtn[4] = t
+        let newPagi = dotExistOrNot(pagiBtn)
+        setPagiBtnValue(newPagi)
+        return newPagi
     }
     
     return {
         handlePagiByData,
         handleDot,
-        nextOrPrev
+        nextOrPrev,
+        handleLastButton
     }
 
 };

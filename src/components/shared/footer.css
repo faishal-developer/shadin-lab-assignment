@@ -75,6 +75,10 @@
     color: rgba(0, 0, 0, 0.815) !important;
 }
 
+.d-none {
+    display: none;
+}
+
 .cart-i-disable {
     cursor: no-drop;
     color: #42535f98;

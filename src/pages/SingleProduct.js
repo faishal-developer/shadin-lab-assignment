@@ -11,7 +11,6 @@ const SingleProduct = () => {
     let {id} = useParams()
     let {data:products} =useContext(ThemeContext)
 
-    console.log(products);
     const product = products?.data?.find((v, i) => v?.id == id) || fakeData.find((v, i) => v?.id == id)
     const data={
         head1:'RELATED',

@@ -6,12 +6,6 @@ const validate = values => {
     } else if (values.name.length > 15) {
         errors.name = 'Must be 15 characters or less';
     }
-
-    if (!values.id) {
-        errors.id = 'Required';
-    } else if (values.id > 2000) {
-        errors.id = 'id should be less than 2000';
-    }
     if (!values.shortDes) {
         errors.shortDes = 'Required';
     } else if (values.shortDes.length < 10 || values.shortDes.length>100) {
@@ -32,6 +26,15 @@ const validate = values => {
     if (!values.image1) {
         errors.image1 = 'Required';
     } 
+    if (!values.image2) {
+        errors.image2 = 'Required';
+    } 
+    if (!values.Brand) {
+        errors.Brand = 'Please select brand';
+    } 
+    if(values.sizes.length<1){
+        errors.sizes = 'please select at-least one size'
+    }
 
     return errors;
 };

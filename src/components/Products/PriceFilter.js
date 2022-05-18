@@ -8,29 +8,27 @@ import './Products.css'
 
 const PriceFilter = () => {
     const {priceSlider,page,setPriceSlider,size,brand} = useContext(ThemeContext)
-    const {requestFunc,getUrl} = useRequest()
-    const { search } = useLocation();
-    const {debounce} = useDebounce()
-    const navigate = useNavigate()
-    const limit = new URLSearchParams(search).get('limit');
+    // const {requestFunc,getUrl} = useRequest()
+    // const { search } = useLocation();
+    // const {debounce} = useDebounce()
+    // const navigate = useNavigate()
+    // const limit = new URLSearchParams(search).get('limit');
 
-    const request = useCallback((()=>{
-        let timerId;
-        return (slider) => {
-            if (timerId) {
-                clearTimeout(timerId)
-            }
-            console.log(slider, 'kaj ki korche?');
-            timerId = setTimeout(() => { 
-                requestFunc(limit,page,size,brand,slider)
-                navigate(getUrl(limit, page, size, brand, slider))
-             }, 1000)
-        }})(),[]);
-    useEffect(()=>{
-        console.log(priceSlider);
-        if(priceSlider[0] === 100 && priceSlider[1]===250)return
-        request(priceSlider)
-    },[priceSlider,request])
+    // const request = useCallback((()=>{
+    //     let timerId;
+    //     return (slider) => {
+    //         if (timerId) {
+    //             clearTimeout(timerId)
+    //         }
+    //         timerId = setTimeout(() => { 
+    //             requestFunc(limit,page,size,brand,slider)
+    //             // navigate(getUrl(limit, page, size, brand, slider))
+    //          }, 1000)
+    //     }})(),[]);
+    // useEffect(()=>{
+    //     if(priceSlider[0] === 100 && priceSlider[1]===250)return
+    //     request(priceSlider)
+    // },[priceSlider,request])
     return (
         <div className='p-aside-common-bg '>
             <h3 className='orange-color p-aside-common-h3'>Price Filter</h3>

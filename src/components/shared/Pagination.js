@@ -13,31 +13,32 @@ const Pagination = () => {
     useEffect(() => {
         let newPagi = {...pagiBtnValue}
         newPagi.t = Math.ceil(data.total/Number(quantity))||1
-        setPagiBtnValue(newPagi)
-        handlePagiByData(newPagi)
+        // setPagiBtnValue(newPagi)
+        handlePagiByData(newPagi,page)
         setQuantity(Number(quantity))
     }, [data.total])
-   
+    
 
-    const nextDisable = pagiBtnValue[4] <= pagiBtnValue[3] + 1 || page === pagiBtnValue.t
+    const nextDisable =page>=pagiBtnValue.t
     return (
         <div className='flex a-i-center mt-10vh j-c-center'>
             <button
-                onClick={() => nextOrPrev(false, 1)}
-                disabled={pagiBtnValue[1] < 2}
-                className={pagiBtnValue[1] < 2 ? 'pagi-btn p-btn-disable' : 'pagi-btn p-btn-active'}
+                onClick={() =>{setPage(page-1);handlePagiByData(pagiBtnValue,page-1)}}
+                disabled={page<=1}
+                className={page<=1? 'pagi-btn p-btn-disable' : 'pagi-btn p-btn-active'}
             >
                 {`<`}
             </button>
-            <PaginationBtn page={page} setPage={setPage} totalPage={pagiBtnValue.t} value={pagiBtnValue[1]}/>
-            <PaginationBtn page={page} setPage={setPage} totalPage={pagiBtnValue.t} value={pagiBtnValue[2]}/>
-            <PaginationBtn page={page} setPage={setPage} totalPage={pagiBtnValue.t} value={pagiBtnValue[3]}/>
-            <button onClick={handleDot} className={pagiBtnValue.dot ? 'c-pointer bg-light' :'d-none'}> ...... </button>
-            <PaginationBtn page={page} setPage={setPage} totalPage={pagiBtnValue.t} value={pagiBtnValue[4]}/>
-            <PaginationBtn page={page} setPage={setPage} totalPage={pagiBtnValue.t} value={pagiBtnValue[5]}/>
-            <PaginationBtn page={page} setPage={setPage} totalPage={pagiBtnValue.t} value={pagiBtnValue[6]}/>
+            <PaginationBtn p={1} page={page} setPage={setPage} totalPage={pagiBtnValue.t} value={1}/>
+            <button className={pagiBtnValue.dot1 ? 'c-pointer bg-light' : 'd-none'}> ...... </button>
+            <PaginationBtn p={2} page={page} setPage={setPage} totalPage={pagiBtnValue.t} value={pagiBtnValue[2]}/>
+            <PaginationBtn p={3} page={page} setPage={setPage} totalPage={pagiBtnValue.t} value={pagiBtnValue[3]}/>
+            <PaginationBtn p={4} page={page} setPage={setPage} totalPage={pagiBtnValue.t} value={pagiBtnValue[4]}/>
+            <button className={pagiBtnValue.dot2 ? 'c-pointer bg-light' : 'd-none'}> ...... </button>
+            <PaginationBtn p={5} page={page} setPage={setPage} totalPage={pagiBtnValue.t} value={pagiBtnValue[5]}/>
+            <PaginationBtn p={6} page={page} setPage={setPage} totalPage={pagiBtnValue.t} value={pagiBtnValue[6]}/>
             <button
-                onClick={() => nextOrPrev(true, 1)}
+                onClick={() => { setPage(page + 1); handlePagiByData(pagiBtnValue, page + 1) }}
                 disabled={nextDisable}
                 className={nextDisable ? 'pagi-btn p-btn-disable' : 'pagi-btn p-btn-active'}
             >
